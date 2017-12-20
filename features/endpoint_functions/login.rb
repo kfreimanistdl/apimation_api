@@ -34,15 +34,6 @@ def check_personal_info
   assert_equal(@test_user.email, response_hash['email'], "Incorrect email")
   assert_equal(@test_user.email, response_hash['login'], "Incorrect login")
   assert_equal(@test_user.user_id, response_hash['user_id'], "Incorrect user id")
-
-  response_projects = RestClient::Request.execute(method: :get,
-                                                  url: 'https://apimation.com/projects',
-                                                  headers: {},
-                                                  cookies: @test_user.session_cookie)
-
-  response_hash = JSON.parse(response_projects)
-
-  assert_equal('rest-api-workshop-with-Karbic', response_hash[0]['name'], "Incorrect project")
 end
 
 def login_wrong_password
